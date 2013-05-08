@@ -3,6 +3,41 @@
  * Copyright © 2013 Clay Miller (clay@smockle.com)
  */
 
+/* CSS
+ * Sets CSS properties using JSON.
+ *
+ * Usage: element.css({ property: value });
+ */
+if (!HTMLElement.prototype.css) {
+	HTMLElement.prototype.css = function (properties) {
+		for (var p in properties) {
+			this.style[p] = properties[p];
+		}
+		return this;
+	}
+}
+
+/* Set Attributes
+ * Sets HTML attributes (eg. id, class, styles) using JSON. 
+ * Inspired by http://stackoverflow.com/questions/12274748/
+ *
+ * Usage: element.setAttributes({ attribute: value });
+ */
+if (!HTMLElement.prototype.setAttributes) {
+	HTMLElement.prototype.setAttributes = function (attributes) {
+	    for (var a in attributes) {
+	        if ((a == "styles" || a == "style") && typeof attributes[a] == "object")
+				this.css(attributes[a]);
+	        else if (a == "html")
+	            this.innerHTML = attributes[a];
+	        else
+	            this.setAttribute(a, attributes[a]);	
+	        
+	    }
+		return this;
+	};
+}
+
 /* Add Class
  * Implements Add Class for HTMLElements.
  *
@@ -24,6 +59,34 @@ if (!HTMLElement.prototype.addClass) {
 if (!HTMLElement.prototype.removeClass) {
 	HTMLElement.prototype.removeClass = function(className) {
 		this.className = this.className.replace(new RegExp("(\\s|^)" + className + "(\\s|$)"), "");
+		return this;
+	};
+}
+
+/* CSS
+ * Implements CSS for NodeLists.
+ *
+ * Usage: nodeList.css({ property: value });
+ */
+if (!NodeList.prototype.css) {
+	NodeList.prototype.css = function (properties) {
+		for (var i = 0; i < this.length; i++) {
+			this[i].css(properties);
+		}
+		return this;
+	};
+}
+
+/* Set Attributes
+ * Implements Set Attributes for NodeLists.
+ *
+ * Usage: nodeList.setAttributes({ attribute: value });
+ */
+if (!NodeList.prototype.setAttributes) {
+	NodeList.prototype.setAttributes = function (attributes) {
+		for (var i = 0; i < this.length; i++) {
+			this[i].setAttributes(attributes);
+		}
 		return this;
 	};
 }
