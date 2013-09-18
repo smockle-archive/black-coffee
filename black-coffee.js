@@ -3,6 +3,9 @@
  * Copyright © 2013 Clay Miller (clay@smockle.com)
  */
 
+/*jslint plusplus: true */
+/*global HTMLElement: true, NodeList: true */
+
 /* CSS
  * Sets CSS properties using JSON.
  *
@@ -10,11 +13,16 @@
  */
 if (!HTMLElement.prototype.css) {
 	HTMLElement.prototype.css = function (properties) {
-		for (var p in properties) {
-			this.style[p] = properties[p];
+        "use strict";
+        
+        var p;
+		for (p in properties) {
+            if (properties.hasOwnProperty(p)) {
+                this.style[p] = properties[p];
+            }
 		}
 		return this;
-	}
+	};
 }
 
 /* Set Attributes
@@ -25,14 +33,19 @@ if (!HTMLElement.prototype.css) {
  */
 if (!HTMLElement.prototype.setAttributes) {
 	HTMLElement.prototype.setAttributes = function (attributes) {
-	    for (var a in attributes) {
-	        if ((a == "styles" || a == "style") && typeof attributes[a] == "object")
-				this.css(attributes[a]);
-	        else if (a == "html")
-	            this.innerHTML = attributes[a];
-	        else
-	            this.setAttribute(a, attributes[a]);	
-	        
+        "use strict";
+        
+        var a;
+	    for (a in attributes) {
+            if (attributes.hasOwnProperty(a)) {
+                if ((a === "styles" || a === "style") && typeof attributes[a] === "object") {
+                    this.css(attributes[a]);
+                } else if (a === "html") {
+                    this.innerHTML = attributes[a];
+                } else {
+                    this.setAttribute(a, attributes[a]);
+                }
+            }
 	    }
 		return this;
 	};
@@ -44,7 +57,9 @@ if (!HTMLElement.prototype.setAttributes) {
  * Usage: element.addClass(className);
  */
 if (!HTMLElement.prototype.addClass) {
-	HTMLElement.prototype.addClass = function(className) {
+	HTMLElement.prototype.addClass = function (className) {
+        "use strict";
+        
 		this.className = this.className + " " + className;
 		return this;
 	};
@@ -57,7 +72,9 @@ if (!HTMLElement.prototype.addClass) {
  * Usage: element.removeClass(className);
  */
 if (!HTMLElement.prototype.removeClass) {
-	HTMLElement.prototype.removeClass = function(className) {
+	HTMLElement.prototype.removeClass = function (className) {
+        "use strict";
+        
 		this.className = this.className.replace(new RegExp("(\\s|^)" + className + "(\\s|$)"), "");
 		return this;
 	};
@@ -70,7 +87,10 @@ if (!HTMLElement.prototype.removeClass) {
  */
 if (!NodeList.prototype.css) {
 	NodeList.prototype.css = function (properties) {
-		for (var i = 0; i < this.length; i++) {
+        "use strict";
+        
+        var i;
+		for (i = 0; i < this.length; i++) {
 			this[i].css(properties);
 		}
 		return this;
@@ -84,7 +104,10 @@ if (!NodeList.prototype.css) {
  */
 if (!NodeList.prototype.setAttributes) {
 	NodeList.prototype.setAttributes = function (attributes) {
-		for (var i = 0; i < this.length; i++) {
+        "use strict";
+        
+        var i;
+		for (i = 0; i < this.length; i++) {
 			this[i].setAttributes(attributes);
 		}
 		return this;
@@ -97,8 +120,11 @@ if (!NodeList.prototype.setAttributes) {
  * Usage: nodeList.addClass(className);
  */
 if (!NodeList.prototype.addClass) {
-	NodeList.prototype.addClass = function(className) {
-		for (var i = 0; i < this.length; i++) {
+	NodeList.prototype.addClass = function (className) {
+        "use strict";
+        
+        var i;
+		for (i = 0; i < this.length; i++) {
 			this[i].addClass(className);
 		}
 		return this;
@@ -111,8 +137,11 @@ if (!NodeList.prototype.addClass) {
  * Usage: nodeList.removeClass(className);
  */
 if (!NodeList.prototype.removeClass) {
-	NodeList.prototype.removeClass = function(className) {
-		for (var i = 0; i < this.length; i++) {
+	NodeList.prototype.removeClass = function (className) {
+        "use strict";
+        
+        var i;
+		for (i = 0; i < this.length; i++) {
 			this[i].removeClass(className);
 		}
 		return this;
@@ -125,8 +154,11 @@ if (!NodeList.prototype.removeClass) {
  * Usage: nodeList.addEventListener(event, callback);
  */
 if (!NodeList.prototype.addEventListener) {
-	NodeList.prototype.addEventListener = function(event, callback) {
-		for (var i = 0; i < this.length; i++) {
+	NodeList.prototype.addEventListener = function (event, callback) {
+        "use strict";
+        
+        var i;
+		for (i = 0; i < this.length; i++) {
 			this[i].addEventListener(event, callback);
 		}
 		return this;
