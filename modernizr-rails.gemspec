@@ -2,7 +2,7 @@
 require File.expand_path('../lib/modernizr/rails/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "modernizr-rails"
+  s.name        = "black-coffee"
   s.version     = Modernizr::Rails::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Russ Frisch"]
