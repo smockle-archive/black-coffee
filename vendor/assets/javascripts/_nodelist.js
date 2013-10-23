@@ -50,6 +50,16 @@ if (!NodeList.prototype.css) {
 	}
 }
 
+// For Each
+// Usage: nodeList.forEach(callback)
+
+if (!NodeList.prototype.forEach) {
+	NodeList.prototype.forEach = function (callback) {
+        "use strict";
+        return this.toArray().forEach(callback)
+	}
+}
+
 // Map
 // Usage: nodeList.map(callback)
 
