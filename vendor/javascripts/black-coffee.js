@@ -1,3 +1,17 @@
+// This is a manifest file that'll be compiled into black-coffee.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// the compiled file.
+//
+// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
+// GO AFTER THE REQUIRES BELOW.
+//
+//= require_tree .
+
 /*jshint bitwise: true, curly: true, eqeqeq: true, forin: true, immed: true, indent: 4, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: double, undef: true, unused: vars, strict: true, trailing: true, maxdepth: 3, browser: true, asi: true */
 /*global _: true */
 
@@ -46,7 +60,6 @@ if (_.extend === undefined) {
 
 
 // Ready
-// Copyright © 2013 John Resig (jeresig@gmail.com) and Clay Miller (clay@smockle.com)
 
 if (window._ === undefined) {
     window._ = {}
