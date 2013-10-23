@@ -6,7 +6,7 @@ require "black_coffee/rails/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "black_coffee"
-  s.version     = BlackCoffee::VERSION
+  s.version     = BlackCoffee::Rails::VERSION
   s.authors     = ["Clay Miller"]
   s.email       = ["clay@smockle.com"]
   s.homepage    = "http://www.smockle.com"
