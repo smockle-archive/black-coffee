@@ -7,6 +7,7 @@
 
 // Closest
 // Usage: element.closest(selector)
+
 this.Element && function (ElementPrototype) {
     ElementPrototype.closest = 
     function (selector) {
@@ -21,6 +22,7 @@ this.Element && function (ElementPrototype) {
 
 // Matches
 // Usage: element.matches(selector)
+
 this.Element && function (ElementPrototype) {
     ElementPrototype.matches = ElementPrototype.matches ||
     ElementPrototype.matchesSelector || 
