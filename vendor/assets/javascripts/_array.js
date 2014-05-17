@@ -15,6 +15,26 @@ if (!Array.prototype.contains) {
     }
 }
 
+// Flatten
+// Usage: array.flatten()
+if (!Array.prototype.flatten) {
+    Array.prototype.flatten = function () {
+        "use strict";
+        return [].concat.apply([], this)
+    }
+}
+
+// Unique
+// Usage: array.unique()
+if (!Array.prototype.unique) {
+    Array.prototype.unique = function(a) {
+        "use strict";
+        return function () {
+            return this.filter(a);
+        }
+    } (function (a,b,c) { return c.indexOf(a, b + 1) < 0; });
+}
+
 // Test Contains
 // Usage: _.test();
 
